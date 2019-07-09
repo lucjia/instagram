@@ -40,11 +40,12 @@
 //    }];
     
     // Cache logged in user for a persisting user session
-//    if (PFUser.currentUser) {
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//
-//        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FeedViewController"];
-//    }
+    if (PFUser.currentUser) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"FeedViewController"];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        self.window.rootViewController = navigationController;
+    }
     
     return YES;
 }

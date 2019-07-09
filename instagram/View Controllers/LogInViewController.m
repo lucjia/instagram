@@ -37,6 +37,7 @@
             // Display view controller that needs to shown after successful login
             NSLog(@"Segue to Feed");
             [self performSegueWithIdentifier:@"toFeed" sender:self];
+            NSLog(@"Segued");
         }
     }];
 }
