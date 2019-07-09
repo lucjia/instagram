@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.passwordField.secureTextEntry = YES;
 }
 
 - (void)registerUser {
@@ -38,6 +40,20 @@
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
+            
+            // Create alert
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Register"
+                                                                           message:@"Invalid username, email, or password."
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+            // Create a try again action
+            UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Dismiss"
+                                                                    style:UIAlertActionStyleCancel
+                                                                  handler:^(UIAlertAction * _Nonnull action) {
+                                                                      // Handle cancel response here. Doing nothing will dismiss the view.
+                                                                  }];
+            // Add the cancel action to the alertController
+            [alert addAction:dismissAction];
+            [self presentViewController:alert animated:YES completion:nil];
         } else {
             NSLog(@"User registered successfully");
         }

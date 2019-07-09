@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.passwordField.secureTextEntry = YES;
 }
 
 - (void)loginUser {
@@ -31,6 +33,20 @@
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
+            
+            // Create alert
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Log In"
+                                                                           message:@"Invalid username or password."
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+            // Create a try again action
+            UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Dismiss"
+                                                                     style:UIAlertActionStyleCancel
+                                                                   handler:^(UIAlertAction * _Nonnull action) {
+                                                                       // Handle cancel response here. Doing nothing will dismiss the view.
+                                                                   }];
+            // Add the cancel action to the alertController
+            [alert addAction:dismissAction];
+            [self presentViewController:alert animated:YES completion:nil];
         } else {
             NSLog(@"User logged in successfully");
             

@@ -156,6 +156,12 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZS-v5-CQ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="PostViewController" id="WAB-VA-3Ep" customClass="PostViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wl5-vo-Z3s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="nPx-Fu-pVI"/>
+                    </view>
                     <navigationItem key="navigationItem" id="Egn-PV-deu"/>
                 </viewController>
             </objects>
