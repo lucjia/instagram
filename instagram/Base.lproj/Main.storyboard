@@ -68,7 +68,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="loginButton" destination="wTC-al-d9b" id="yFe-Qe-ScG"/>
                         <outlet property="passwordField" destination="lNR-Xd-w8y" id="0rI-Hx-5ie"/>
                         <outlet property="usernameField" destination="a8K-Ju-7Sh" id="QfM-pe-fdb"/>
                         <segue destination="G8I-gN-aRA" kind="show" identifier="toFeed" id="t5e-7t-3oh"/>
@@ -150,7 +149,6 @@
                     <connections>
                         <outlet property="emailField" destination="ZSk-CZ-hr4" id="KPE-5A-KKx"/>
                         <outlet property="passwordField" destination="rQ7-nc-hvy" id="f2o-Pl-7Ll"/>
-                        <outlet property="registerButton" destination="6ua-gy-zoA" id="PKE-Ob-c3D"/>
                         <outlet property="usernameField" destination="aqQ-Al-a4C" id="mA4-TO-xc2"/>
                         <segue destination="G8I-gN-aRA" kind="show" id="Rxf-tX-0iA"/>
                     </connections>
