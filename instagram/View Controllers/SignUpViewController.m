@@ -8,6 +8,7 @@
 
 #import "SignUpViewController.h"
 #import "Parse/Parse.h"
+#import "LogInViewController.h"
 
 @interface SignUpViewController ()
 
@@ -39,15 +40,32 @@
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             NSLog(@"User registered successfully");
+        }
+    }];
+}
+
+- (void)loginUserAfterRegistration {
+    NSString *username = self.usernameField.text;
+    NSString *password = self.passwordField.text;
+    
+    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
+        if (error != nil) {
+            NSLog(@"User log in failed: %@", error.localizedDescription);
+        } else {
+            NSLog(@"User logged in successfully");
             
-            // Manually segue to logged in view
+            // Display view controller that needs to shown after successful login
+            NSLog(@"Segue to Feed");
             [self performSegueWithIdentifier:@"toFeed" sender:self];
+            
+            // Current error: breaking at segue 
         }
     }];
 }
 
 - (IBAction)didPressRegister:(id)sender {
     [self registerUser];
+    [self loginUserAfterRegistration];
 }
 
 /*

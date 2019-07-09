@@ -150,7 +150,7 @@
                         <outlet property="emailField" destination="ZSk-CZ-hr4" id="KPE-5A-KKx"/>
                         <outlet property="passwordField" destination="rQ7-nc-hvy" id="f2o-Pl-7Ll"/>
                         <outlet property="usernameField" destination="aqQ-Al-a4C" id="mA4-TO-xc2"/>
-                        <segue destination="G8I-gN-aRA" kind="show" id="Rxf-tX-0iA"/>
+                        <segue destination="G8I-gN-aRA" kind="show" identifier="toFeed" id="Rxf-tX-0iA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D3G-up-aQq" userLabel="First Responder" sceneMemberID="firstResponder"/>
