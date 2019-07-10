@@ -17,6 +17,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *postArray;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -25,6 +27,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // Start the activity indicator
+    [self.activityIndicator startAnimating];
+    
+    // refresh control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -61,11 +71,18 @@
         if (posts) {
             // Do something with the data fetched
             self.postArray = posts;
+            
             [self.tableView reloadData];
+            
+            // Stop the activity indicator
+            // Hides automatically if "Hides When Stopped" is enabled
+            [self.activityIndicator stopAnimating];
         }
         else {
             // Handle error
         }
+        // Tell the refreshControl to stop spinning
+        [self.refreshControl endRefreshing];
     }];
 }
 
