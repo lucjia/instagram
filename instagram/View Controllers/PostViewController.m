@@ -7,10 +7,14 @@
 //
 
 #import "PostViewController.h"
+#import "Post.h"
 
 @interface PostViewController ()
 
 @property (strong, nonatomic) UIImagePickerController *imagePickerVC;
+@property (weak, nonatomic) IBOutlet UIImageView *imagePreviewView;
+@property (weak, nonatomic) IBOutlet UITextView *captionTextView;
+@property (strong, nonatomic) UIImage *resizedImage;
 
 @end
 
@@ -51,6 +55,10 @@
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
     // Do something with the images (based on your use case)
+    self.resizedImage = [self resizeImage:originalImage withSize:CGSizeMake(200, 200)];
+    NSLog(@"Resized image");
+    self.imagePreviewView.image = self.resizedImage;
+    NSLog(@"Set image");
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -68,6 +76,15 @@
     UIGraphicsEndImageContext();
     
     return newImage;
+}
+
+- (IBAction)didPressShare:(id)sender {
+    [Post postUserImage:self.resizedImage withCaption:self.captionTextView.text withCompletion:nil];
+    [self performSegueWithIdentifier:@"toFeed" sender:self];
+}
+
+- (IBAction)didPressCancel:(id)sender {
+    [self performSegueWithIdentifier:@"toFeed" sender:self];
 }
 
 /*

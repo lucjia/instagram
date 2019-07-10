@@ -38,7 +38,7 @@
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Log In"
                                                                            message:@"Invalid username or password."
                                                                     preferredStyle:(UIAlertControllerStyleAlert)];
-            // Create a try again action
+            // Create a dismiss action
             UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Dismiss"
                                                                      style:UIAlertActionStyleCancel
                                                                    handler:^(UIAlertAction * _Nonnull action) {

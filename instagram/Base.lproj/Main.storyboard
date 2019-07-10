@@ -164,13 +164,34 @@
                                 <rect key="frame" x="16" y="80" width="116" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Lorem ipsum dolor" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SUj-MM-T49">
+                                <rect key="frame" x="140" y="80" width="219" height="116"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="nPx-Fu-pVI"/>
                     </view>
                     <navigationItem key="navigationItem" id="Egn-PV-deu">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="jUa-if-xFI"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="jUa-if-xFI">
+                            <connections>
+                                <action selector="didPressCancel:" destination="WAB-VA-3Ep" id="nif-uJ-Wn4"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="Z7r-wo-ssC">
+                            <connections>
+                                <action selector="didPressShare:" destination="WAB-VA-3Ep" id="eok-D1-qCd"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="captionTextView" destination="SUj-MM-T49" id="uub-iP-vbY"/>
+                        <outlet property="imagePreviewView" destination="AP5-BX-gID" id="PCr-Tc-5e1"/>
+                        <segue destination="cKb-JY-b6Y" kind="show" identifier="toFeed" id="7mP-AJ-999"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="3380" y="978.26086956521749"/>
@@ -281,5 +302,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="qyF-gy-9jG"/>
+        <segue reference="7mP-AJ-999"/>
     </inferredMetricsTieBreakers>
 </document>
