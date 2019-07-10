@@ -238,6 +238,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="JBI-9J-ACd">
+                                                    <rect key="frame" x="177" y="232" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="mbb-19-Zx8" firstAttribute="top" secondItem="DUw-bj-MQH" secondAttribute="bottom" constant="8" id="BxF-iV-Zr8"/>
@@ -355,6 +359,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6bn-dH-jjl"/>
+        <segue reference="qyF-gy-9jG"/>
     </inferredMetricsTieBreakers>
 </document>
