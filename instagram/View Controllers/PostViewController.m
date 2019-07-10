@@ -80,7 +80,7 @@
 
 - (IBAction)didPressShare:(id)sender {
     [Post postUserImage:self.resizedImage withCaption:self.captionTextView.text withCompletion:nil];
-    
+    NSLog(@"Posted image");
     [self performSegueWithIdentifier:@"toFeed" sender:self];
 }
 

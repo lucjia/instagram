@@ -30,6 +30,7 @@
     self.tableView.delegate = self;
     
     [self fetchPosts];
+    [self.tableView reloadData];
 }
 
 - (IBAction)didPressLogOut:(id)sender {
@@ -59,6 +60,8 @@
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
             // Do something with the data fetched
+            self.postArray = posts;
+            [self.tableView reloadData];
         }
         else {
             // Handle error
@@ -75,6 +78,16 @@
     
     Post *post = self.postArray[indexPath.row];
     cell.post = post;
+    
+    [post.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!data) {
+            return NSLog(@"%@", error);
+        }
+        cell.postImageView.image = [UIImage imageWithData:data];
+    }];
+    
+    cell.usernameLabel.text = post.userID;
+    cell.captionLabel.text = post.caption;
     
     return cell;
 }

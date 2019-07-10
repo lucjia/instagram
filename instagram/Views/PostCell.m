@@ -8,6 +8,7 @@
 
 #import "PostCell.h"
 #import "Post.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation PostCell
 
@@ -20,13 +21,6 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-}
-
-- (void)setPost:(Post *)post {
-    _post = post;
-    self.postImageView.image = post.image;
-    self.usernameLabel.text = post.userID;
-    self.captionLabel.text = post.caption;
 }
 
 @end
