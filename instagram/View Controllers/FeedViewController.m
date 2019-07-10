@@ -8,19 +8,28 @@
 
 #import "FeedViewController.h"
 #import "LogInViewController.h"
+#import "PostViewController.h"
+#import "Post.h"
+#import "PostCell.h"
 #import "Parse/Parse.h"
 
-@interface FeedViewController ()
+@interface FeedViewController () <PostViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *postArray;
 
 @end
 
-@implementation FeedViewController
+@implementation FeedViewController : UIViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSLog(@"Loaded feed");
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    [self fetchPosts];
 }
 
 - (IBAction)didPressLogOut:(id)sender {
@@ -37,6 +46,43 @@
     LogInViewController *logInVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LogInViewController"];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:logInVC];
     [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)fetchPosts {
+    // Construct PFQuery
+    PFQuery *postQuery = [Post query];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    postQuery.limit = 20;
+    
+    // Fetch data asynchronously
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+        if (posts) {
+            // Do something with the data fetched
+        }
+        else {
+            // Handle error
+        }
+    }];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.postArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
+    
+    Post *post = self.postArray[indexPath.row];
+    cell.post = post;
+    
+    return cell;
+}
+
+- (void) didPost:(Post *)post {
+    self.postArray = [self.postArray arrayByAddingObject:post];
+    [self fetchPosts];
+    [self.tableView reloadData];
 }
 
 /*

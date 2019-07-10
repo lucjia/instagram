@@ -55,7 +55,7 @@
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
     // Do something with the images (based on your use case)
-    self.resizedImage = [self resizeImage:originalImage withSize:CGSizeMake(200, 200)];
+    self.resizedImage = [self resizeImage:originalImage withSize:CGSizeMake(400, 400)];
     NSLog(@"Resized image");
     self.imagePreviewView.image = self.resizedImage;
     NSLog(@"Set image");
@@ -80,6 +80,7 @@
 
 - (IBAction)didPressShare:(id)sender {
     [Post postUserImage:self.resizedImage withCaption:self.captionTextView.text withCompletion:nil];
+    
     [self performSegueWithIdentifier:@"toFeed" sender:self];
 }
 

@@ -190,7 +190,7 @@
                     <connections>
                         <outlet property="captionTextView" destination="SUj-MM-T49" id="uub-iP-vbY"/>
                         <outlet property="imagePreviewView" destination="AP5-BX-gID" id="PCr-Tc-5e1"/>
-                        <segue destination="cKb-JY-b6Y" kind="show" identifier="toFeed" id="7mP-AJ-999"/>
+                        <segue destination="1lv-W6-i3q" kind="show" identifier="toFeed" id="6bn-dH-jjl"/>
                     </connections>
                 </viewController>
             </objects>
@@ -209,6 +209,41 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="486" id="ws5-kb-CwQ" customClass="PostCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="486"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ws5-kb-CwQ" id="Msq-Ch-W7o">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="485.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DUw-bj-MQH">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbb-19-Zx8">
+                                                    <rect key="frame" x="15" y="383" width="76" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvp-zH-81s">
+                                                    <rect key="frame" x="15" y="412" width="57" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="captionLabel" destination="kvp-zH-81s" id="qdF-LX-4v8"/>
+                                            <outlet property="postImageView" destination="DUw-bj-MQH" id="mSc-Ks-7n1"/>
+                                            <outlet property="usernameLabel" destination="mbb-19-Zx8" id="D8Q-SU-Aoi"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -221,9 +256,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="BjD-AF-eV2" id="nOb-Ij-yS5"/>
+                    </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="800.79999999999995" y="978.26086956521749"/>
+            <point key="canvasLocation" x="980" y="978"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="T91-DW-vA0">
@@ -301,7 +339,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qyF-gy-9jG"/>
-        <segue reference="7mP-AJ-999"/>
+        <segue reference="6bn-dH-jjl"/>
     </inferredMetricsTieBreakers>
 </document>

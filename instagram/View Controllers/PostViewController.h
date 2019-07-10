@@ -7,10 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Post.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol PostViewControllerDelegate
+
+- (void)didPost:(Post *)post;
+
+@end
+
 @interface PostViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (nonatomic, weak) id<PostViewControllerDelegate> delegate;
 
 @end
 
