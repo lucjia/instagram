@@ -9,6 +9,7 @@
 #import "FeedViewController.h"
 #import "LogInViewController.h"
 #import "PostViewController.h"
+#import "DetailsViewController.h"
 #import "Post.h"
 #import "PostCell.h"
 #import "Parse/Parse.h"
@@ -115,14 +116,24 @@
     [self.tableView reloadData];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+//    if ([segue.identifier isEqualToString: @"toDetails"]) {
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Post *post = self.postArray[indexPath.row];
+        
+        DetailsViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.post = post;
+        
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    }
 }
-*/
 
 @end
