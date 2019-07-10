@@ -190,7 +190,7 @@
                     <connections>
                         <outlet property="captionTextView" destination="SUj-MM-T49" id="uub-iP-vbY"/>
                         <outlet property="imagePreviewView" destination="AP5-BX-gID" id="PCr-Tc-5e1"/>
-                        <segue destination="1lv-W6-i3q" kind="show" identifier="toFeed" id="6bn-dH-jjl"/>
+                        <segue destination="1lv-W6-i3q" kind="presentation" identifier="toFeed" id="6bn-dH-jjl"/>
                     </connections>
                 </viewController>
             </objects>
