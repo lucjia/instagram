@@ -159,11 +159,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUm-3y-Hlf">
+                                <rect key="frame" x="25" y="123" width="99" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Choose Image"/>
+                                <connections>
+                                    <action selector="didPressChoose:" destination="WAB-VA-3Ep" eventType="touchUpInside" id="Mua-aI-AN6"/>
+                                </connections>
+                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AP5-BX-gID">
                                 <rect key="frame" x="16" y="80" width="116" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Lorem ipsum dolor" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SUj-MM-T49">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SUj-MM-T49">
                                 <rect key="frame" x="140" y="80" width="219" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -194,7 +202,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZS-v5-CQ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3380" y="978.26086956521749"/>
+            <point key="canvasLocation" x="3249" y="978"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="Kqx-Lu-gzU">
+            <objects>
+                <viewController id="gpk-ke-MCT" customClass="ProfileViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MDd-0J-RPV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4xP-MW-Nfz">
+                                <rect key="frame" x="16" y="86" width="122" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drq-iz-P4X">
+                                <rect key="frame" x="27" y="239" width="79" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvi-VU-1Dn">
+                                <rect key="frame" x="27" y="281" width="25" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="hPt-EZ-BHs"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="fTp-WJ-1mA"/>
+                    <connections>
+                        <outlet property="bioLabel" destination="tvi-VU-1Dn" id="2t5-yz-gzf"/>
+                        <outlet property="usernameLabel" destination="drq-iz-P4X" id="Ts7-Op-BPK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CS0-UH-imR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5432.8000000000002" y="975.56221889055485"/>
         </scene>
         <!--Feed-->
         <scene sceneID="16m-sI-OCF">
@@ -346,6 +394,7 @@
                     <connections>
                         <segue destination="zgI-rH-PTS" kind="relationship" relationship="viewControllers" id="N4O-7H-i61"/>
                         <segue destination="sEK-a2-DY3" kind="relationship" relationship="viewControllers" id="qL5-Z7-LiM"/>
+                        <segue destination="GuW-yv-NLN" kind="relationship" relationship="viewControllers" id="1hu-e5-UKf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="amk-hb-ra9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -408,8 +457,27 @@
             </objects>
             <point key="canvasLocation" x="2440.8000000000002" y="978.26086956521749"/>
         </scene>
+        <!--Profile-->
+        <scene sceneID="CAh-gb-14w">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GuW-yv-NLN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" id="use-tW-1SA"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QJV-Fj-BQN">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gpk-ke-MCT" kind="relationship" relationship="rootViewController" id="DRt-nj-irG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gk9-9q-TnK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4652" y="976"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xwd-Xj-ngL"/>
+        <segue reference="6bn-dH-jjl"/>
     </inferredMetricsTieBreakers>
 </document>

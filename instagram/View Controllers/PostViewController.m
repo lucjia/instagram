@@ -9,7 +9,7 @@
 #import "PostViewController.h"
 #import "Post.h"
 
-@interface PostViewController ()
+@interface PostViewController () <UITextViewDelegate>
 
 @property (strong, nonatomic) UIImagePickerController *imagePickerVC;
 @property (weak, nonatomic) IBOutlet UIImageView *imagePreviewView;
@@ -23,6 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.captionTextView.delegate = self;
+    self.captionTextView.text = @"Write a caption...";
+    self.captionTextView.textColor = [UIColor lightGrayColor];
     
     [self createUIImagePickerController];
     [self openCameraOrRoll];
@@ -86,6 +90,29 @@
 
 - (IBAction)didPressCancel:(id)sender {
     [self performSegueWithIdentifier:@"toFeed" sender:self];
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@"Write a caption..."]) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor]; //optional
+    }
+    [textView becomeFirstResponder];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@""]) {
+        textView.text = @"Write a caption...";
+        textView.textColor = [UIColor lightGrayColor]; //optional
+    }
+    [textView resignFirstResponder];
+}
+
+- (IBAction)didPressChoose:(id)sender {
+    [self createUIImagePickerController];
+    [self openCameraOrRoll];
 }
 
 /*
