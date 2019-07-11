@@ -91,6 +91,7 @@
         [Post postUserImage:self.resizedImage withCaption:self.captionTextView.text withCompletion:nil];
     }
     NSLog(@"Posted image");
+//    [self.delegate didPost:post];
     [self performSegueWithIdentifier:@"toFeed" sender:self];
 }
 

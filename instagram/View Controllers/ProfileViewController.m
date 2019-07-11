@@ -27,9 +27,11 @@
     self.bioLabel.text = @"Hi this is bio";
     self.profileImageView.layer.cornerRadius = 63;
     self.profileImageView.clipsToBounds = YES;
-//    self.profileImageView = [UIImage imageWithData:data];
     
     [self fetchPosts];
+    
+    [self getProfilePicture];
+    [self getBio];
     
     // set 3 images per line
     UICollectionViewFlowLayout *layout = self.collectionView.collectionViewLayout;
@@ -103,6 +105,33 @@
         DetailsViewController *detailsViewController = [segue destinationViewController];
         detailsViewController.post = post;
     }
+}
+
+-(void)getProfilePicture {
+    [[PFUser currentUser][@"profilePic"] getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error && imageData) {
+            //If there was no error with the internet request and some kind of data was returned, use that data to form the profile image with the handy method of UIImage.
+            
+            //Set the image view to the image with the data returned from Parse.
+            self.profileImageView.image = [UIImage imageWithData:imageData];
+        } else {
+            NSLog(@"Error: %@ %@", error, [error localizedDescription]);
+        }
+    }];
+}
+
+-(void)getBio {
+    [[PFUser currentUser][@"bio"] getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error && data) {
+            //If there was no error with the internet request and some kind of data was returned, use that data to form the profile image with the handy method of UIImage.
+            
+            //Set the image view to the image with the data returned from Parse.
+            NSString* string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            self.bioLabel.text = string;
+        } else {
+            NSLog(@"Error: %@ %@", error, [error localizedDescription]);
+        }
+    }];
 }
 
 @end

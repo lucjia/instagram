@@ -10,7 +10,7 @@
 #import "Parse/Parse.h"
 #import "LogInViewController.h"
 
-@interface SignUpViewController ()
+@interface SignUpViewController () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
@@ -31,6 +31,11 @@
     self.registerButton.backgroundColor = [UIColor colorWithRed:134.0/255.0f green:43.0/255.0f blue:142.0/255.0f alpha:1.0f];
     self.registerButton.layer.cornerRadius = 18;
     self.registerButton.clipsToBounds = YES;
+    
+    
+    self.usernameField.delegate = self;
+    self.passwordField.delegate = self;
+    self.emailField.delegate = self;
 }
 
 - (void)registerUser {
@@ -89,6 +94,11 @@
 - (IBAction)didPressRegister:(id)sender {
     [self registerUser];
     [self loginUserAfterRegistration];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 /*

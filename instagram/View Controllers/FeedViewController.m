@@ -125,6 +125,19 @@
     cell.usernameLabel.text = post.userID;
     cell.captionLabel.text = post.caption;
     cell.usernameLabel2.text = post.userID;
+    
+    // Get Profile Image
+    [[PFUser currentUser][@"profilePic"] getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error && imageData) {
+            //If there was no error with the internet request and some kind of data was returned, use that data to form the profile image with the handy method of UIImage.
+            
+            //Set the image view to the image with the data returned from Parse.
+            cell.profileImageView.image = [UIImage imageWithData:imageData];
+        } else {
+            NSLog(@"Error: %@ %@", error, [error localizedDescription]);
+        }
+    }];
+    
     cell.profileImageView.layer.cornerRadius = 20;
     cell.profileImageView.clipsToBounds = YES;
     
@@ -155,12 +168,18 @@
     }
 }
 
+- (void) didPost:(Post *)post {
+    self.postArray = [self.postArray arrayByAddingObject:post];
+    [self fetchPosts];
+    [self.tableView reloadData];
+}
+
 // Infinite Scrolling
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if(!self.isMoreDataLoading){
         // Calculate the position of one screen length before the bottom of the results
         int scrollViewContentHeight = self.tableView.contentSize.height;
-        int scrollOffsetThreshold = scrollViewContentHeight - 60;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
         
         // When the user has scrolled past the threshold, start requesting
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
@@ -183,9 +202,7 @@
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
             // Do something with the data fetched
-            for (int i = 0; i < 20; i++) {
-//                [self.postArray addObject:@([posts objectAtIndex:i])];
-            }
+            [self.postArray addObjectsFromArray:posts];
             self.isMoreDataLoading = false;
             [self.tableView reloadData];
             
@@ -201,7 +218,5 @@
         [self.refreshControl endRefreshing];
     }];
 }
-
-
 
 @end

@@ -8,6 +8,7 @@
 
 #import "SettingsViewController.h"
 #import "Parse/Parse.h"
+#import "ProfileViewController.h"
 
 @interface SettingsViewController ()
 
@@ -22,6 +23,8 @@
     // Do any additional setup after loading the view.
     self.profileImageView.layer.cornerRadius = 63;
     self.profileImageView.clipsToBounds = YES;
+    
+    [self getProfilePicture];
 }
 
 - (IBAction)didPressChange:(id)sender {
@@ -61,7 +64,9 @@
     NSLog(@"Resized image");
     
     // Dismiss UIImagePickerController to go back to your original view controller
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self setProfilePic];
+    }];
 }
 
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
@@ -81,14 +86,38 @@
 - (void)setProfilePic {
     NSData *imageData = UIImagePNGRepresentation(self.resizedImage);
     PFFileObject *imageFile = [PFFileObject fileObjectWithName:@"image.png" data:imageData];
-    
-    PFUser *user = [PFUser currentUser];
-    [user setObject:imageFile forKey:@"profilePic"];
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+   
+    [[PFUser currentUser] setObject:imageFile forKey:@"profilePic"];
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
-            
+            self.profileImageView.image = self.resizedImage;
         }
     }];
+}
+
+-(void)getProfilePicture {
+    [[PFUser currentUser][@"profilePic"] getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error && imageData) {
+            //If there was no error with the internet request and some kind of data was returned, use that data to form the profile image with the handy method of UIImage.
+            
+            //Set the image view to the image with the data returned from Parse.
+            self.profileImageView.image = [UIImage imageWithData:imageData];
+        } else {
+            NSLog(@"Error: %@ %@", error, [error localizedDescription]);
+        }
+    }];
+}
+
+- (void)setBio {
+    [[PFUser currentUser] setObject:self.bioTextView.text forKey:@"bio"];
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+        }
+    }];
+}
+
+- (IBAction)didPressBio:(id)sender {
+    [self setBio];
 }
 
 /*
