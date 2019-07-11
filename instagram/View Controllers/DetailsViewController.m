@@ -29,7 +29,7 @@
     
     self.usernameLabel.text = self.post.userID;
     NSLog(@"%@", self.post.userID);
-    self.captionLabel.text = self.post.caption;
+    self.captionTextView.text = self.post.caption;
     
     // Format date string
     NSDate *originalDate = self.post.createdAt;

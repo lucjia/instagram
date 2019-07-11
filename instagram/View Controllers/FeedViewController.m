@@ -131,7 +131,6 @@
     // Format date string
     NSDate *originalDate = post.createdAt;
     NSString *createdAtString = [NSString stringWithFormat:@"%@", [originalDate timeAgoSinceNow]];
-    NSLog(@"%@", createdAtString);
     
     cell.timeLabel.text = createdAtString;
     return cell;
@@ -202,5 +201,7 @@
         [self.refreshControl endRefreshing];
     }];
 }
+
+
 
 @end

@@ -20,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.profileImageView.layer.cornerRadius = 63;
+    self.profileImageView.clipsToBounds = YES;
 }
 
 - (IBAction)didPressChange:(id)sender {
