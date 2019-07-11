@@ -83,7 +83,11 @@
 }
 
 - (IBAction)didPressShare:(id)sender {
-    [Post postUserImage:self.resizedImage withCaption:self.captionTextView.text withCompletion:nil];
+    if (self.captionTextView.textColor == [UIColor lightGrayColor]) {
+        [Post postUserImage:self.resizedImage withCaption:@"" withCompletion:nil];
+    } else {
+        [Post postUserImage:self.resizedImage withCaption:self.captionTextView.text withCompletion:nil];
+    }
     NSLog(@"Posted image");
     [self performSegueWithIdentifier:@"toFeed" sender:self];
 }

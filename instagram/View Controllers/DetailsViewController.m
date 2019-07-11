@@ -8,6 +8,7 @@
 
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "DateTools.h"
 
 @interface DetailsViewController ()
 
@@ -29,8 +30,13 @@
     self.usernameLabel.text = self.post.userID;
     NSLog(@"%@", self.post.userID);
     self.captionLabel.text = self.post.caption;
-    self.timeLabel.text = self.post.time;
-    NSLog(@"%@", self.post.time);
+    
+    // Format date string
+    NSDate *originalDate = self.post.createdAt;
+    NSString *createdAtString = [NSString stringWithFormat:@"%@", [originalDate shortTimeAgoSinceNow]];
+    NSLog(@"%@", createdAtString);
+    
+    self.timeLabel.text = createdAtString;
 }
 
 /*
