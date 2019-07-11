@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UIButton *registerButton;
 
 @end
 
@@ -25,6 +26,11 @@
     // Do any additional setup after loading the view.
     
     self.passwordField.secureTextEntry = YES;
+    
+    // Set buttons
+    self.registerButton.backgroundColor = [UIColor colorWithRed:134.0/255.0f green:43.0/255.0f blue:142.0/255.0f alpha:1.0f];
+    self.registerButton.layer.cornerRadius = 18;
+    self.registerButton.clipsToBounds = YES;
 }
 
 - (void)registerUser {
@@ -53,6 +59,7 @@
                                                                   }];
             // Add the cancel action to the alertController
             [alert addAction:dismissAction];
+            alert.view.tintColor = [UIColor colorWithRed:134.0/255.0f green:43.0/255.0f blue:142.0/255.0f alpha:1.0f];
             [self presentViewController:alert animated:YES completion:nil];
         } else {
             NSLog(@"User registered successfully");

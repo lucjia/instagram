@@ -14,6 +14,9 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UIView *gradientView;
+@property (weak, nonatomic) IBOutlet UIButton *logInButton;
+@property (weak, nonatomic) IBOutlet UIButton *registerButton;
 
 @end
 
@@ -24,6 +27,20 @@
     // Do any additional setup after loading the view.
     
     self.passwordField.secureTextEntry = YES;
+    
+    // Transparent - white Gradient
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.gradientView.bounds;
+    gradient.colors = @[(id)[UIColor whiteColor].CGColor, (id)[UIColor colorWithWhite:1 alpha:0].CGColor];
+    [self.gradientView.layer insertSublayer:gradient atIndex:0];
+    
+    // Set buttons
+    self.logInButton.backgroundColor = [UIColor whiteColor];
+    self.logInButton.layer.cornerRadius = 18;
+    self.logInButton.clipsToBounds = YES;
+    self.registerButton.backgroundColor = [UIColor whiteColor];
+    self.registerButton.layer.cornerRadius = 18;
+    self.registerButton.clipsToBounds = YES;
 }
 
 - (void)loginUser {
@@ -47,6 +64,7 @@
                                                                       }];
                 // Add the cancel action to the alertController
                 [alert addAction:dismissAction];
+                alert.view.tintColor = [UIColor colorWithRed:134.0/255.0f green:43.0/255.0f blue:142.0/255.0f alpha:1.0f];
                 [self presentViewController:alert animated:YES completion:nil];
             } else if ([self.passwordField.text isEqual:@""]) {
                 // Create alert
@@ -61,6 +79,7 @@
                                                                       }];
                 // Add the cancel action to the alertController
                 [alert addAction:dismissAction];
+                alert.view.tintColor = [UIColor colorWithRed:134.0/255.0f green:43.0/255.0f blue:142.0/255.0f alpha:1.0f];
                 [self presentViewController:alert animated:YES completion:nil];
             } else {
                 // Create alert
@@ -75,6 +94,7 @@
                                                                       }];
                 // Add the cancel action to the alertController
                 [alert addAction:dismissAction];
+                alert.view.tintColor = [UIColor colorWithRed:134.0/255.0f green:43.0/255.0f blue:142.0/255.0f alpha:1.0f];
                 [self presentViewController:alert animated:YES completion:nil];
             }
         } else {
