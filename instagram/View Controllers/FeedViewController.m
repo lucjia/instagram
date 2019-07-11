@@ -40,6 +40,13 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
+    // Image in nav bar
+    UIImage *image = [UIImage imageNamed:@"insta"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = CGRectMake(0, 0, 30, 30);
+    [imageView setContentMode:UIViewContentModeScaleAspectFit];
+    self.navigationItem.titleView = imageView;
+    
     [self fetchPosts];
     [self.tableView reloadData];
 }

@@ -15,7 +15,7 @@
             <objects>
                 <viewController storyboardIdentifier="LogInViewController" id="BYZ-38-t0r" customClass="LogInViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qQ-dN-eEp">
@@ -83,7 +83,7 @@
             <objects>
                 <viewController title="Register" id="CbC-KH-tdQ" customClass="SignUpViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yxm-xG-qsZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aqQ-Al-a4C">
@@ -249,7 +249,7 @@
             <objects>
                 <viewController id="cKb-JY-b6Y" customClass="FeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1GG-7d-WKs">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="JBI-9J-ACd">
@@ -339,7 +339,7 @@
             <objects>
                 <viewController storyboardIdentifier="DetailsViewController" id="aJX-dm-b56" customClass="DetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cav-YR-6OL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lyD-yN-FCk">
@@ -405,9 +405,9 @@
         <scene sceneID="Rbj-Qm-9Wo">
             <objects>
                 <navigationController storyboardIdentifier="FeedNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="zgI-rH-PTS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" id="MJi-T3-Jhv"/>
+                    <tabBarItem key="tabBarItem" title="Feed" selectedImage="feed_tab" id="MJi-T3-Jhv"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="edO-nc-Xnz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="edO-nc-Xnz">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -425,7 +425,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ktp-9f-wAE" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PrY-S7-cUJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="PrY-S7-cUJ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -442,7 +442,7 @@
         <scene sceneID="67C-dZ-QHh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sEK-a2-DY3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Post" id="T15-Pi-mCg"/>
+                    <tabBarItem key="tabBarItem" title="Post" selectedImage="insta_camera_btn" id="T15-Pi-mCg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="q12-qK-uX7">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -461,7 +461,7 @@
         <scene sceneID="CAh-gb-14w">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GuW-yv-NLN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="use-tW-1SA"/>
+                    <tabBarItem key="tabBarItem" title="Profile" selectedImage="profile_tab" id="use-tW-1SA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QJV-Fj-BQN">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -477,7 +477,12 @@
             <point key="canvasLocation" x="4652" y="976"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="feed_tab" width="25" height="25"/>
+        <image name="insta_camera_btn" width="25" height="25"/>
+        <image name="profile_tab" width="25" height="25"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6bn-dH-jjl"/>
+        <segue reference="xwd-Xj-ngL"/>
     </inferredMetricsTieBreakers>
 </document>

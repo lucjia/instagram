@@ -33,7 +33,7 @@
     
     // Format date string
     NSDate *originalDate = self.post.createdAt;
-    NSString *createdAtString = [NSString stringWithFormat:@"%@", [originalDate shortTimeAgoSinceNow]];
+    NSString *createdAtString = [NSString stringWithFormat:@"%@", [originalDate timeAgoSinceNow]];
     NSLog(@"%@", createdAtString);
     
     self.timeLabel.text = createdAtString;

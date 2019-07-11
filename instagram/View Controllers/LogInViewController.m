@@ -34,19 +34,49 @@
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
             
-            // Create alert
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Log In"
-                                                                           message:@"Invalid username or password."
-                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
-            // Create a dismiss action
-            UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Dismiss"
-                                                                     style:UIAlertActionStyleCancel
-                                                                   handler:^(UIAlertAction * _Nonnull action) {
-                                                                       // Handle cancel response here. Doing nothing will dismiss the view.
-                                                                   }];
-            // Add the cancel action to the alertController
-            [alert addAction:dismissAction];
-            [self presentViewController:alert animated:YES completion:nil];
+            if ([self.usernameField.text isEqual:@""]) {
+                // Create alert
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Log In"
+                                                                               message:@"Please enter a username."
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+                // Create a dismiss action
+                UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Dismiss"
+                                                                        style:UIAlertActionStyleCancel
+                                                                      handler:^(UIAlertAction * _Nonnull action) {
+                                                                          // Handle cancel response here. Doing nothing will dismiss the view.
+                                                                      }];
+                // Add the cancel action to the alertController
+                [alert addAction:dismissAction];
+                [self presentViewController:alert animated:YES completion:nil];
+            } else if ([self.passwordField.text isEqual:@""]) {
+                // Create alert
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Log In"
+                                                                               message:@"Please enter a password."
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+                // Create a dismiss action
+                UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Dismiss"
+                                                                        style:UIAlertActionStyleCancel
+                                                                      handler:^(UIAlertAction * _Nonnull action) {
+                                                                          // Handle cancel response here. Doing nothing will dismiss the view.
+                                                                      }];
+                // Add the cancel action to the alertController
+                [alert addAction:dismissAction];
+                [self presentViewController:alert animated:YES completion:nil];
+            } else {
+                // Create alert
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Log In"
+                                                                               message:@"Invalid username or password."
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+                // Create a dismiss action
+                UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Dismiss"
+                                                                        style:UIAlertActionStyleCancel
+                                                                      handler:^(UIAlertAction * _Nonnull action) {
+                                                                          // Handle cancel response here. Doing nothing will dismiss the view.
+                                                                      }];
+                // Add the cancel action to the alertController
+                [alert addAction:dismissAction];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
         } else {
             NSLog(@"User logged in successfully");
             
