@@ -75,7 +75,7 @@
 }
 
 - (IBAction)didPressSettings:(id)sender {
-    
+    [self performSegueWithIdentifier:@"toSettings" sender:nil];
 }
 
 - (void)fetchPosts {
@@ -137,13 +137,6 @@
     return cell;
 }
 
-//- (void) didPost:(Post *)post {
-//    self.postArray = [self.postArray arrayByAddingObject:post];
-//    [self fetchPosts];
-//    [self.tableView reloadData];
-//}
-
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -151,7 +144,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-//    if ([segue.identifier isEqualToString: @"toDetails"]) {
+    if ([segue.identifier isEqualToString: @"toDetails"]) {
         UITableViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
         Post *post = self.postArray[indexPath.row];
@@ -160,7 +153,7 @@
         detailsViewController.post = post;
         
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    }
+    }
 }
 
 // Infinite Scrolling

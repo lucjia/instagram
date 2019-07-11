@@ -245,7 +245,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SUj-MM-T49">
                                 <rect key="frame" x="156" y="84" width="199" height="514"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUm-3y-Hlf">
@@ -328,24 +328,32 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NFq-0B-BDY">
-                                <rect key="frame" x="0.0" y="317" width="375" height="350"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NFq-0B-BDY">
+                                <rect key="frame" x="0.0" y="321" width="375" height="297"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vdv-zf-SSR">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="125" height="125"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Pf5-ai-vrF">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="Pf5-ai-vrF" customClass="PostCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="trd-TA-Pp4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
                                         </view>
+                                        <connections>
+                                            <outlet property="postImageView" destination="trd-TA-Pp4" id="fTT-q1-Z9a"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -354,20 +362,33 @@
                         <constraints>
                             <constraint firstItem="4xP-MW-Nfz" firstAttribute="top" secondItem="hPt-EZ-BHs" secondAttribute="top" constant="20" id="0Na-7M-wX3"/>
                             <constraint firstItem="hPt-EZ-BHs" firstAttribute="trailing" secondItem="tvi-VU-1Dn" secondAttribute="trailing" constant="20" id="F0b-O4-J4V"/>
+                            <constraint firstItem="NFq-0B-BDY" firstAttribute="trailing" secondItem="hPt-EZ-BHs" secondAttribute="trailing" id="Ku9-Zb-WT4"/>
                             <constraint firstItem="drq-iz-P4X" firstAttribute="leading" secondItem="hPt-EZ-BHs" secondAttribute="leading" constant="20" id="Oi3-zX-5RN"/>
+                            <constraint firstItem="NFq-0B-BDY" firstAttribute="leading" secondItem="hPt-EZ-BHs" secondAttribute="leading" id="Vok-RX-Pyg"/>
+                            <constraint firstItem="NFq-0B-BDY" firstAttribute="top" secondItem="tvi-VU-1Dn" secondAttribute="bottom" constant="25" id="WjU-5n-L3Z"/>
                             <constraint firstItem="tvi-VU-1Dn" firstAttribute="leading" secondItem="hPt-EZ-BHs" secondAttribute="leading" constant="20" id="XvB-7W-vVI"/>
                             <constraint firstItem="tvi-VU-1Dn" firstAttribute="top" secondItem="drq-iz-P4X" secondAttribute="bottom" constant="20" id="bXg-X4-xCz"/>
                             <constraint firstItem="4xP-MW-Nfz" firstAttribute="leading" secondItem="hPt-EZ-BHs" secondAttribute="leading" constant="20" id="eb6-Hv-8Cy"/>
                             <constraint firstItem="hPt-EZ-BHs" firstAttribute="trailing" secondItem="drq-iz-P4X" secondAttribute="trailing" constant="20" id="js3-TU-w7Q"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="NFq-0B-BDY" secondAttribute="bottom" id="rkO-ai-Few"/>
                             <constraint firstItem="drq-iz-P4X" firstAttribute="top" secondItem="4xP-MW-Nfz" secondAttribute="bottom" constant="20" id="sKk-tG-gAS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hPt-EZ-BHs"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="fTp-WJ-1mA"/>
+                    <navigationItem key="navigationItem" title="Profile" id="fTp-WJ-1mA">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="xrr-sY-9YN">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="didPressSettings:" destination="gpk-ke-MCT" id="TAb-Dh-OdF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bioLabel" destination="tvi-VU-1Dn" id="2t5-yz-gzf"/>
+                        <outlet property="collectionView" destination="NFq-0B-BDY" id="9TJ-b5-bHv"/>
                         <outlet property="profileImageView" destination="4xP-MW-Nfz" id="4KT-iZ-H2x"/>
                         <outlet property="usernameLabel" destination="drq-iz-P4X" id="Ts7-Op-BPK"/>
+                        <segue destination="GfX-xd-Smp" kind="show" identifier="toSettings" id="2yY-M2-XMG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CS0-UH-imR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -491,6 +512,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="JBI-9J-ACd" id="OTe-K1-M7w"/>
                         <outlet property="tableView" destination="BjD-AF-eV2" id="nOb-Ij-yS5"/>
+                        <segue destination="GfX-xd-Smp" kind="show" identifier="toSettings" id="3yo-Ff-SXM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jw1-9i-VYN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -558,6 +580,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="748-BG-2Ds" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1004" y="975.56221889055485"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="6Ge-Tp-8bB">
+            <objects>
+                <viewController id="GfX-xd-Smp" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XLR-i1-yl6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xng-L0-SJR">
+                                <rect key="frame" x="31" y="199" width="154" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Change Profile Picture">
+                                    <color key="titleColor" red="0.52549019610000003" green="0.16862745100000001" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressChange:" destination="GfX-xd-Smp" eventType="touchUpInside" id="gQR-fc-bU7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="jRL-rt-moR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bRz-H9-lyW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1004" y="1746"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="T91-DW-vA0">
@@ -667,6 +717,7 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qyF-gy-9jG"/>
+        <segue reference="6bn-dH-jjl"/>
+        <segue reference="2yY-M2-XMG"/>
     </inferredMetricsTieBreakers>
 </document>
