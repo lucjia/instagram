@@ -119,6 +119,8 @@
     cell.usernameLabel.text = post.userID;
     cell.captionLabel.text = post.caption;
     cell.usernameLabel2.text = post.userID;
+    cell.profileImageView.layer.cornerRadius = 20;
+    cell.profileImageView.clipsToBounds = YES;
     
     // Format date string
     NSDate *originalDate = post.createdAt;

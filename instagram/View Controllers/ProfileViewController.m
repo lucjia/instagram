@@ -20,6 +20,8 @@
     
     self.usernameLabel.text = PFUser.currentUser.username;
     self.bioLabel.text = @"Hi this is bio";
+    self.profileImageView.layer.cornerRadius = 63;
+    self.profileImageView.clipsToBounds = YES;
 }
 
 /*
