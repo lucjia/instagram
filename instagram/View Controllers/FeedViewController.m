@@ -13,6 +13,7 @@
 #import "Post.h"
 #import "PostCell.h"
 #import "Parse/Parse.h"
+#import "DateTools.h"
 
 @interface FeedViewController () <PostViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -113,7 +114,14 @@
     
     cell.usernameLabel.text = post.userID;
     cell.captionLabel.text = post.caption;
+    cell.usernameLabel2.text = post.userID;
     
+    // Format date string
+    NSDate *originalDate = post.createdAt;
+    NSString *createdAtString = [NSString stringWithFormat:@"%@", [originalDate timeAgoSinceNow]];
+    NSLog(@"%@", createdAtString);
+    
+    cell.timeLabel.text = createdAtString;
     return cell;
 }
 
