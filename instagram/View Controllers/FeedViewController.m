@@ -68,6 +68,10 @@
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
+- (IBAction)didPressSettings:(id)sender {
+    
+}
+
 - (void)fetchPosts {
     // Construct PFQuery
     PFQuery *postQuery = [Post query];
