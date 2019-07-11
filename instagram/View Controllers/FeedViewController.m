@@ -15,12 +15,13 @@
 #import "Parse/Parse.h"
 #import "DateTools.h"
 
-@interface FeedViewController () <PostViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface FeedViewController () <PostViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *postArray;
+@property (strong, nonatomic) NSMutableArray *postArray;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (assign, nonatomic) BOOL isMoreDataLoading;
 
 @end
 
@@ -47,6 +48,11 @@
     imageView.frame = CGRectMake(0, 0, 30, 30);
     [imageView setContentMode:UIViewContentModeScaleAspectFit];
     self.navigationItem.titleView = imageView;
+    
+    // Show last cell above tab bar
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.extendedLayoutIncludesOpaqueBars = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self fetchPosts];
     [self.tableView reloadData];
@@ -131,11 +137,11 @@
     return cell;
 }
 
-- (void) didPost:(Post *)post {
-    self.postArray = [self.postArray arrayByAddingObject:post];
-    [self fetchPosts];
-    [self.tableView reloadData];
-}
+//- (void) didPost:(Post *)post {
+//    self.postArray = [self.postArray arrayByAddingObject:post];
+//    [self fetchPosts];
+//    [self.tableView reloadData];
+//}
 
 
 #pragma mark - Navigation
@@ -155,6 +161,53 @@
         
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 //    }
+}
+
+// Infinite Scrolling
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!self.isMoreDataLoading){
+        // Calculate the position of one screen length before the bottom of the results
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - 60;
+        
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+            self.isMoreDataLoading = true;
+            
+            [self loadMoreData];
+        }
+    }
+}
+
+// Request more data
+-(void)loadMoreData{
+    // Construct PFQuery
+    PFQuery *postQuery = [Post query];
+    [postQuery orderByDescending:@"createdAt"];
+    [postQuery includeKey:@"author"];
+    postQuery.limit = 20;
+    
+    // Fetch data asynchronously
+    [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+        if (posts) {
+            // Do something with the data fetched
+            for (int i = 0; i < 20; i++) {
+//                [self.postArray addObject:@([posts objectAtIndex:i])];
+            }
+            self.isMoreDataLoading = false;
+            [self.tableView reloadData];
+            
+            // Stop the activity indicator
+            // Hides automatically if "Hides When Stopped" is enabled
+            [self.activityIndicator stopAnimating];
+        }
+        else {
+            // Handle error
+            
+        }
+        // Tell the refreshControl to stop spinning
+        [self.refreshControl endRefreshing];
+    }];
 }
 
 @end
