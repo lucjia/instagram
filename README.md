@@ -47,6 +47,8 @@ Please list two areas of the assignment you'd like to **discuss further with you
 Here's a walkthrough of implemented user stories:
 
 Video Walkthroughs are in the GitHub repository since the content length is too long.
+Gif 1 https://recordit.co/w3OC3oK8hL
+Gif 2 https://recordit.co/Tm1PpvFvLx
 
 GIF created with [Recordit](recordit.co).
 
