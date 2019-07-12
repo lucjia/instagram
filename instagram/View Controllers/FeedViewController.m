@@ -22,6 +22,7 @@
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
+@property (strong, nonatomic) PFUser *queriedUser;
 
 @end
 
@@ -127,14 +128,24 @@
     cell.usernameLabel2.text = post.userID;
     
     // Get Profile Image
-    [[PFUser currentUser][@"profilePic"] getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if (!error && imageData) {
-            //If there was no error with the internet request and some kind of data was returned, use that data to form the profile image with the handy method of UIImage.
-            
-            //Set the image view to the image with the data returned from Parse.
-            cell.profileImageView.image = [UIImage imageWithData:imageData];
-        } else {
-            NSLog(@"Error: %@ %@", error, [error localizedDescription]);
+    
+    PFQuery *query = [PFUser query];
+    [query whereKey:@"username" equalTo:post.userID];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error)
+    {
+        if (!error) {
+            //You found the user!
+            self.queriedUser = (PFUser *)object;
+            [self.queriedUser[@"profilePic"] getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                if (!error && imageData) {
+                    //If there was no error with the internet request and some kind of data was returned, use that data to form the profile image with the handy method of UIImage.
+                    
+                    //Set the image view to the image with the data returned from Parse.
+                    cell.profileImageView.image = [UIImage imageWithData:imageData];
+                } else {
+                    NSLog(@"Error: %@ %@", error, [error localizedDescription]);
+                }
+            }];
         }
     }];
     
@@ -168,11 +179,11 @@
     }
 }
 
-- (void) didPost:(Post *)post {
-    self.postArray = [self.postArray arrayByAddingObject:post];
-    [self fetchPosts];
-    [self.tableView reloadData];
-}
+//- (void) didPost:(Post *)post {
+//    self.postArray = [self.postArray arrayByAddingObject:post];
+//    [self fetchPosts];
+//    [self.tableView reloadData];
+//}
 
 // Infinite Scrolling
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{

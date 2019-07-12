@@ -27,6 +27,9 @@
     self.captionTextView.delegate = self;
     self.captionTextView.text = @"Write a caption...";
     self.captionTextView.textColor = [UIColor lightGrayColor];
+    self.captionTextView.layer.borderWidth = 1.5f;
+    self.captionTextView.layer.borderColor = [[UIColor colorWithRed:200.0/255.0f green:200.0/255.0f blue:200.0/255.0f alpha:1.0f] CGColor];
+    self.captionTextView.layer.cornerRadius = 6;
     
     [self createUIImagePickerController];
     [self openCameraOrRoll];

@@ -10,7 +10,7 @@
 #import "Parse/Parse.h"
 #import "ProfileViewController.h"
 
-@interface SettingsViewController ()
+@interface SettingsViewController () <UITextViewDelegate>
 
 @property (strong, nonatomic) UIImagePickerController *imagePickerVC;
 
@@ -25,6 +25,12 @@
     self.profileImageView.clipsToBounds = YES;
     
     [self getProfilePicture];
+    self.bioTextView.text = [PFUser currentUser][@"bio"];
+    self.bioTextView.layer.borderWidth = 1.5f;
+    self.bioTextView.layer.borderColor = [[UIColor colorWithRed:200.0/255.0f green:200.0/255.0f blue:200.0/255.0f alpha:1.0f] CGColor];
+    self.bioTextView.layer.cornerRadius = 6;
+    
+    self.bioTextView.delegate = self;
 }
 
 - (IBAction)didPressChange:(id)sender {
@@ -118,6 +124,25 @@
 
 - (IBAction)didPressBio:(id)sender {
     [self setBio];
+    // Create alert
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Bio Changed"
+                                                                   message:@"Your bio has been changed."
+                                                            preferredStyle:(UIAlertControllerStyleAlert)];
+    // Create a dismiss action
+    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Dismiss"
+                                                            style:UIAlertActionStyleCancel
+                                                          handler:^(UIAlertAction * _Nonnull action) {
+                                                              // Handle cancel response here. Doing nothing will dismiss the view.
+                                                          }];
+    // Add the cancel action to the alertController
+    [alert addAction:dismissAction];
+    alert.view.tintColor = [UIColor colorWithRed:134.0/255.0f green:43.0/255.0f blue:142.0/255.0f alpha:1.0f];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 /*

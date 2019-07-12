@@ -674,17 +674,17 @@
                                     <action selector="didPressChange:" destination="GfX-xd-Smp" eventType="touchUpInside" id="gQR-fc-bU7"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="my bio" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PRq-kw-qve">
-                                <rect key="frame" x="67" y="306" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PRq-kw-qve">
+                                <rect key="frame" x="50" y="301" width="275" height="145"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mxw-2g-bxh">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mxw-2g-bxh">
                                 <rect key="frame" x="148" y="454" width="79" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Change Bio"/>
+                                <state key="normal" title="Change Bio">
+                                    <color key="titleColor" red="0.52549019610000003" green="0.16862745100000001" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <action selector="didPressBio:" destination="GfX-xd-Smp" eventType="touchUpInside" id="kjI-9n-4sa"/>
                                 </connections>
@@ -693,11 +693,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="jRL-rt-moR" firstAttribute="trailing" secondItem="PRq-kw-qve" secondAttribute="trailing" constant="50" id="8HO-p9-1X3"/>
                             <constraint firstItem="xng-L0-SJR" firstAttribute="centerX" secondItem="XLR-i1-yl6" secondAttribute="centerX" id="Fmf-U8-3Cv"/>
+                            <constraint firstItem="jRL-rt-moR" firstAttribute="bottom" secondItem="Mxw-2g-bxh" secondAttribute="bottom" constant="134" id="GOl-1E-Vfe"/>
                             <constraint firstItem="xng-L0-SJR" firstAttribute="top" secondItem="pHB-Js-19a" secondAttribute="bottom" constant="8" id="Iue-lo-5us"/>
                             <constraint firstItem="xng-L0-SJR" firstAttribute="centerX" secondItem="pHB-Js-19a" secondAttribute="centerX" id="SQe-Vf-8Yo"/>
+                            <constraint firstItem="PRq-kw-qve" firstAttribute="centerX" secondItem="XLR-i1-yl6" secondAttribute="centerX" id="b9u-9L-S8j"/>
+                            <constraint firstItem="PRq-kw-qve" firstAttribute="centerX" secondItem="XLR-i1-yl6" secondAttribute="centerX" id="cA9-Tf-FVX"/>
+                            <constraint firstItem="PRq-kw-qve" firstAttribute="top" secondItem="xng-L0-SJR" secondAttribute="bottom" constant="50" id="dbx-gQ-qTa"/>
+                            <constraint firstItem="Mxw-2g-bxh" firstAttribute="centerX" secondItem="XLR-i1-yl6" secondAttribute="centerX" id="fDi-5X-IKj"/>
                             <constraint firstItem="pHB-Js-19a" firstAttribute="top" secondItem="jRL-rt-moR" secondAttribute="top" constant="20" id="j9n-Ui-Wep"/>
+                            <constraint firstItem="Mxw-2g-bxh" firstAttribute="top" secondItem="PRq-kw-qve" secondAttribute="bottom" constant="8" id="nG1-9p-COR"/>
+                            <constraint firstItem="PRq-kw-qve" firstAttribute="leading" secondItem="jRL-rt-moR" secondAttribute="leading" constant="50" id="qjw-0w-kcS"/>
                             <constraint firstItem="pHB-Js-19a" firstAttribute="centerX" secondItem="XLR-i1-yl6" secondAttribute="centerX" id="t05-JF-DNv"/>
+                            <constraint firstItem="xng-L0-SJR" firstAttribute="centerX" secondItem="XLR-i1-yl6" secondAttribute="centerX" id="wxX-u3-CoF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jRL-rt-moR"/>
                     </view>
